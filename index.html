@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow"><title>UATAC · Sales Brief</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{--ink:#ECEDE5;--paper:#0D0E0B;--panel:#15160F;--line:#2A2C22;--amber:#F59E0B;--amber-dk:#FBBF24;
+--olive:#7A8F6A;--stone:#8E9082;--up:#A3C94A;--down:#F87171;--deep:#080907;--mono:'JetBrains Mono','SF Mono',Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:14px/1.45 'Fixel Display','Fixel Text',Inter,-apple-system,'Segoe UI',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{max-width:1140px;margin:0 auto;padding:26px 30px 40px}
+header{background:var(--deep);border-bottom:1px solid #2A2C22;color:#F5F4EF;margin:-26px -30px 22px;padding:22px 30px 18px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-30px;top:-40px;width:220px;height:220px;border:2px solid var(--amber);opacity:.18;transform:rotate(12deg)}
+.hd-eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--amber);text-transform:uppercase}
+.hd-title{font-size:27px;font-weight:800;margin:3px 0 2px}
+.hd-meta{font-family:var(--mono);font-size:11px;color:#B8B5AC;display:flex;gap:18px;flex-wrap:wrap}
+.hd-meta b{color:#F5F4EF}
+.print-btn{position:absolute;right:30px;top:24px;background:var(--amber);color:var(--ink);border:0;font:700 12px var(--mono);letter-spacing:.08em;padding:9px 16px;cursor:pointer;text-transform:uppercase}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--amber);padding:12px 14px}
+.kpi .l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.kpi .v{font-size:22px;font-weight:800;margin-top:4px}
+.kpi .d{font-family:var(--mono);font-size:10.5px;margin-top:2px}
+.kpi.fc{border-top-color:var(--olive);background:#191C10}
+.up{color:var(--up)}.down{color:var(--down)}
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:14px 16px 12px}
+.card h2{font-size:12px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:10px;display:flex;justify-content:space-between}
+.card h2 .sub{color:var(--stone);letter-spacing:.06em;font-weight:400;text-transform:none}
+.chart-wrap{position:relative;height:250px}.chart-sm{position:relative;height:230px}
+/* HERO — головна інфографіка каналів */
+.hero{border:2px solid var(--ink);border-top:6px solid var(--amber);margin-bottom:16px;padding:16px 18px 12px;background:var(--panel)}
+.hero h2{font-size:16px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline}
+.hero h2 .sub{font-size:11px;color:var(--stone);letter-spacing:.06em;font-weight:400;text-transform:none}
+.hero-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:18px}
+.hero-bar{position:relative;height:340px}
+.hero-donut{position:relative;height:340px}
+.tactics{background:var(--deep);color:#F5F4EF;padding:16px 18px;margin-bottom:14px;border-left:5px solid var(--amber)}
+.tactics h2{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;margin-bottom:9px}
+.tactics ol{margin-left:18px;display:grid;gap:7px;font-size:13.5px;line-height:1.5}
+.tactics b{color:var(--amber)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-align:left;padding:5px 8px;border-bottom:2px solid var(--ink)}
+td{padding:5.5px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.num{text-align:right;font-family:var(--mono);font-size:12px;white-space:nowrap}
+.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;padding:2px 6px;border:1px solid var(--line);color:var(--stone);text-transform:uppercase}
+.dot{display:inline-block;width:9px;height:9px;margin-right:7px}
+.risk{background:#332B0E}.risk-hi{background:#3D1A1A}
+.flag{font-weight:700;color:var(--down);font-family:var(--mono);font-size:11px}.ok{color:var(--up)}
+.st{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;padding:2px 7px;border-radius:2px;text-transform:uppercase;font-weight:700}
+.st-open{background:#332B0E;color:#F5C55A}.st-prog{background:#122A4A;color:#7EB3F7}
+.st-done{background:#14301E;color:#7DDF9E}.st-drop{background:#26271F;color:#8E9082;text-decoration:line-through}
+.vd{font-weight:700;font-family:var(--mono);font-size:11px}
+.dbtn{background:transparent;border:1px solid var(--line);color:var(--amber);font:600 10.5px var(--mono);padding:3px 8px;cursor:pointer;white-space:nowrap;border-radius:2px}
+.dbtn:hover{border-color:var(--amber)}.dbtn.on{background:var(--amber);color:#12130F}
+.drow td{background:#0F1109;border-bottom:2px solid var(--line);padding:12px 14px}
+.dwrap{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;font-size:12.5px;line-height:1.5}
+.dh{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dk);margin-bottom:6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.dwrap ul,.dwrap ol{margin-left:16px}.dwrap li{margin-bottom:4px}
+@media print{.dbtn{display:none}.drow{display:table-row!important}}
+@media(max-width:880px){.dwrap{grid-template-columns:1fr}}
+.insights{border:1px dashed var(--amber-dk);background:#201A08;padding:12px 16px;margin-bottom:14px;font-size:13px}
+.insights h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--amber-dk);text-transform:uppercase;margin-bottom:6px}
+.insights li{margin-left:16px;margin-bottom:4px}
+footer{margin-top:18px;padding-top:10px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--stone)}
+@media print{:root{--ink:#12130F;--paper:#fff;--panel:#fff;--line:#D8D5CC;--stone:#6B6C60;--up:#3F6212;--down:#B91C1C}.risk{background:#FEF3C7}.risk-hi{background:#FEE2E2}.insights{background:#FFFBEB}body{font-size:12px}.page{max-width:100%;padding:0 4mm}header{margin:0 -4mm 12px;padding:14px 8mm 12px}
+.print-btn{display:none}.chart-wrap{height:200px}.chart-sm{height:185px}.hero-bar,.hero-donut{height:270px}
+.kpis{gap:8px;margin-bottom:12px}.kpi .v{font-size:18px}.grid2{gap:10px;margin-bottom:10px}
+.card,.kpi,.tactics,.insights,.hero{break-inside:avoid;box-shadow:none}.pb{break-before:page}@page{size:A4;margin:9mm}}
+@media(max-width:880px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.hero-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><style>#uatacGate{position:fixed;inset:0;background:#080907;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;font-family:monospace}#uatacGate input{font:700 26px monospace;letter-spacing:.4em;text-align:center;width:190px;padding:12px;border:2px solid #F59E0B;background:#15160F;color:#ECEDE5;border-radius:4px}#uatacGate .t{color:#F59E0B;letter-spacing:.2em;font-size:13px}#uatacGate .e{color:#F87171;font-size:12px;height:14px}</style><div id="uatacGate"><div class="t">UATAC · SALES BRIEF</div><input id="uatacPin" type="password" inputmode="numeric" maxlength="8" placeholder="PIN" autofocus><div class="e" id="uatacErr"></div></div><script>(function(){var H='158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab';var i=document.getElementById('uatacPin');function ok(){document.getElementById('uatacGate').remove()}async function ch(v){var b=new TextEncoder().encode(v);var d=await crypto.subtle.digest('SHA-256',b);var h=[...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');if(h===H){try{sessionStorage.setItem('ub','1')}catch(e){}ok()}else{document.getElementById('uatacErr').textContent='невірний PIN';i.value=''}}try{if(sessionStorage.getItem('ub')==='1')ok()}catch(e){}i.addEventListener('input',function(){if(i.value.length>=4)ch(i.value)});})();</script>
+<div class="page">
+<header>
+  <button class="print-btn" onclick="window.print()">⎙ Друк / PDF</button>
+  <div class="hd-eyebrow">UATAC · Sales Intelligence · Kyiv</div>
+  <div class="hd-title" id="m-title">Бриф продажів</div>
+  <div class="hd-meta">
+    <span>Дата: <b id="m-today"></b></span><span>Період: <b id="m-period"></b></span>
+    <span>Порівняння: <b id="m-prev"></b></span><span>Джерело: <b>KeyCRM (UTM + source)</b></span>
+  </div>
+</header>
+
+<div class="kpis" id="kpis"></div>
+
+<!-- ГОЛОВНА ІНФОГРАФІКА -->
+<div class="hero">
+  <h2>⬤ Звідки йдуть продажі <span class="sub" id="hero-sub"></span></h2>
+  <div class="hero-grid">
+    <div class="hero-bar"><canvas id="chChannels"></canvas></div>
+    <div class="hero-donut"><canvas id="chDonut"></canvas></div>
+  </div>
+</div>
+
+<div class="tactics">
+  <h2>◈ Тактика дня — акценти по джерелах</h2>
+  <ol id="tactics"></ol>
+</div>
+
+<div class="card" style="margin-bottom:14px">
+  <h2>Рішення місяця — статус і ефект <span class="sub">до = ₴/день 7д перед рішенням · після = ₴/день з дати рішення</span></h2>
+  <table id="tblDec">
+    <thead><tr><th>№</th><th>Дата</th><th>Канал / зона</th><th>Дія</th><th>Відп.</th>
+    <th>Статус</th><th class="num">До, ₴/д</th><th class="num">Після, ₴/д</th><th class="num">Ефект</th><th>Вердикт</th><th>Деталі</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="card" style="margin-bottom:14px">
+  <h2>Джерела продажів — деталізація <span class="sub" id="tbl-sub"></span></h2>
+  <table id="tblChannels">
+    <thead><tr><th>Канал</th><th>Група</th><th class="num">Замовл.</th><th class="num">Виручка, ₴</th>
+    <th class="num">AOV, ₴</th><th class="num">Маржа, ₴</th><th class="num" id="th-prev">Було, ₴</th>
+    <th class="num">Δ</th><th class="num" id="th-pfull">Міс. повн.</th><th class="num">Скас.</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="grid2" style="margin-bottom:14px">
+  <div class="card">
+    <h2>Кампанії платних каналів <span class="sub">неймінг Лери · MTD</span></h2>
+    <table id="tblCamp"><thead><tr><th>Канал</th><th>Кампанія</th><th class="num">Зам.</th><th class="num">Виручка, ₴</th><th class="num">Скас.</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="card">
+    <h2>Shopify INTL — деталізація <span class="sub" id="intlSub"></span></h2>
+    <table id="tblIntl"><thead><tr><th>Місяць</th><th class="num">Замовлень</th><th class="num">Виручка, ₴</th><th class="num">Скас.</th></tr></thead><tbody></tbody></table>
+    <div style="font-size:11px;color:var(--stone);margin-top:8px;font-family:var(--mono)" id="intlNote"></div>
+  </div>
+</div>
+
+<div class="grid2 pb">
+  <div class="card"><h2>Виручка по днях × канали <span class="sub" id="daily-sub"></span></h2>
+    <div class="chart-wrap"><canvas id="chDaily"></canvas></div></div>
+  <div class="card"><h2>Динаміка по місяцях <span class="sub">грн, без скасованих</span></h2>
+    <div class="chart-wrap"><canvas id="chMonth"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="card"><h2>Товарні групи <span class="sub" id="fam-sub"></span></h2>
+    <div class="chart-wrap"><canvas id="chFam"></canvas></div></div>
+  <div class="card"><h2 id="fc-title">Прогноз до кінця місяця <span class="sub">MTD + зважений темп × дні</span></h2>
+    <div class="chart-sm"><canvas id="chFc"></canvas></div></div>
+</div>
+
+<div class="card" style="margin-bottom:14px">
+  <h2>Склад × попит — ризики покриття <span class="sub">топ продажів за 14 днів</span></h2>
+  <table id="tblStock">
+    <thead><tr><th>Товар (SKU)</th><th class="num">Прод. 14д</th><th class="num">Залишок</th><th class="num">Покриття, днів</th><th>Статус</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="insights"><h3>⚠ Гігієна атрибуції — що полагодити</h3><ul id="insights"></ul></div>
+
+<footer><span>UATAC — Ukrainian Advanced Tactical Apparel · внутрішній документ</span><span id="f-gen"></span></footer>
+</div>
+
+<script id="data" type="application/json">{"generated_at": "2026-08-17T06:15:45.870723", "today": "2026-08-16", "month_name": "серпень 2026", "period_cur": ["2026-08-01", "2026-08-16"], "period_prev": ["2026-07-01", "2026-07-16"], "prev_month_name": "липень", "days_in_month": 31, "rem_days": 15, "totals": {"cur": {"orders": 82, "revenue": 397661.0, "margin": 204066.86999999997, "cancelled": 12, "aov": 4850}, "prev": {"orders": 89, "revenue": 414361.9, "margin": 211049.46, "cancelled": 28, "aov": 4656}, "pfull": {"orders": 161, "revenue": 953277.9, "margin": 455024.13000000006, "cancelled": 53, "aov": 5921}}, "channels": [{"channel": "B2B: дропи/дилери/маркетплейси", "group": "b2b", "cur_orders": 16, "cur_revenue": 125107.0, "cur_margin": 51692.4, "cur_cancelled": 0, "cur_aov": 7819, "prev_orders": 14, "prev_revenue": 75687.9, "prev_margin": 30021.600000000002, "prev_cancelled": 7, "prev_aov": 5406, "pfull_revenue": 326405.9, "delta_rev_pct": 65}, {"channel": "Google Ads (PMax/Search)", "group": "site_ua", "cur_orders": 20, "cur_revenue": 61832, "cur_margin": 35371.22, "cur_cancelled": 5, "cur_aov": 3092, "prev_orders": 10, "prev_revenue": 43280, "prev_margin": 22287.15, "prev_cancelled": 2, "prev_aov": 4328, "pfull_revenue": 89146, "delta_rev_pct": 43}, {"channel": "Офіс / телефон (ручні)", "group": "manual", "cur_orders": 13, "cur_revenue": 42609, "cur_margin": 23292.63, "cur_cancelled": 0, "cur_aov": 3278, "prev_orders": 16, "prev_revenue": 72170, "prev_margin": 35754.57, "prev_cancelled": 1, "prev_aov": 4511, "pfull_revenue": 143495, "delta_rev_pct": -41}, {"channel": "Shopify INTL", "group": "intl", "cur_orders": 3, "cur_revenue": 42320, "cur_margin": 28071.96, "cur_cancelled": 0, "cur_aov": 14107, "prev_orders": 9, "prev_revenue": 103500, "prev_margin": 57447.1, "prev_cancelled": 0, "prev_aov": 11500, "pfull_revenue": 150650, "delta_rev_pct": -59}, {"channel": "SEO (Google organic)", "group": "site_ua", "cur_orders": 9, "cur_revenue": 29412, "cur_margin": 11207.150000000001, "cur_cancelled": 3, "cur_aov": 3268, "prev_orders": 13, "prev_revenue": 39542, "prev_margin": 21311.87, "prev_cancelled": 1, "prev_aov": 3042, "pfull_revenue": 95566, "delta_rev_pct": -26}, {"channel": "Email: Horoshop тригери", "group": "site_ua", "cur_orders": 4, "cur_revenue": 26330, "cur_margin": 13075.8, "cur_cancelled": 0, "cur_aov": 6582, "prev_orders": 2, "prev_revenue": 5150, "prev_margin": 2904.42, "prev_cancelled": 0, "prev_aov": 2575, "pfull_revenue": 5150, "delta_rev_pct": 411}, {"channel": "Direct (прямі заходи)", "group": "site_ua", "cur_orders": 4, "cur_revenue": 18876, "cur_margin": 10032.44, "cur_cancelled": 0, "cur_aov": 4719, "prev_orders": 4, "prev_revenue": 11080, "prev_margin": 6158.8, "prev_cancelled": 0, "prev_aov": 2770, "pfull_revenue": 44304, "delta_rev_pct": 70}, {"channel": "TikTok Ads", "group": "site_ua", "cur_orders": 2, "cur_revenue": 15205, "cur_margin": 14648, "cur_cancelled": 1, "cur_aov": 7602, "prev_orders": 3, "prev_revenue": 1950, "prev_margin": 1122, "prev_cancelled": 4, "prev_aov": 650, "pfull_revenue": 3250, "delta_rev_pct": 680}, {"channel": "Google інше (referral)", "group": "site_ua", "cur_orders": 3, "cur_revenue": 10520, "cur_margin": 5754, "cur_cancelled": 0, "cur_aov": 3507, "prev_orders": 1, "prev_revenue": 4836, "prev_margin": 2716, "prev_cancelled": 0, "prev_aov": 4836, "pfull_revenue": 4836, "delta_rev_pct": 118}, {"channel": "Email: Mailchimp/інші", "group": "site_ua", "cur_orders": 2, "cur_revenue": 9745, "cur_margin": 3601.48, "cur_cancelled": 0, "cur_aov": 4872, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 4, "prev_aov": 0, "pfull_revenue": 0, "delta_rev_pct": 100}, {"channel": "Telegram (Лера)", "group": "site_ua", "cur_orders": 1, "cur_revenue": 5130, "cur_margin": 2529, "cur_cancelled": 0, "cur_aov": 5130, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 0, "prev_aov": 0, "pfull_revenue": 2698, "delta_rev_pct": 100}, {"channel": "TikTok органіка (Лера)", "group": "site_ua", "cur_orders": 2, "cur_revenue": 3850, "cur_margin": 1721.79, "cur_cancelled": 0, "cur_aov": 1925, "prev_orders": 2, "prev_revenue": 11700, "prev_margin": 6647, "prev_cancelled": 0, "prev_aov": 5850, "pfull_revenue": 13000, "delta_rev_pct": -67}, {"channel": "Сайт без UTM (direct/втрачено)", "group": "site_ua", "cur_orders": 1, "cur_revenue": 3315, "cur_margin": 1565, "cur_cancelled": 1, "cur_aov": 3315, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 0, "prev_aov": 0, "pfull_revenue": 0, "delta_rev_pct": 100}, {"channel": "Instagram органіка (Лера)", "group": "site_ua", "cur_orders": 1, "cur_revenue": 2560, "cur_margin": 976, "cur_cancelled": 0, "cur_aov": 2560, "prev_orders": 1, "prev_revenue": 1300, "prev_margin": 722, "prev_cancelled": 0, "prev_aov": 1300, "pfull_revenue": 1300, "delta_rev_pct": 97}, {"channel": "Леся (AI-бот)", "group": "bot", "cur_orders": 1, "cur_revenue": 850, "cur_margin": 528, "cur_cancelled": 2, "cur_aov": 850, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 8, "prev_aov": 0, "pfull_revenue": 0, "delta_rev_pct": 100}, {"channel": "Meta Ads (FB/IG)", "group": "site_ua", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 11, "prev_revenue": 22526, "prev_margin": 12837.16, "prev_cancelled": 1, "prev_aov": 2048, "pfull_revenue": 38446, "delta_rev_pct": -100}, {"channel": "Інше: wishpicks", "group": "site_ua", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 1, "prev_revenue": 520, "prev_margin": 264, "prev_cancelled": 0, "prev_aov": 520, "pfull_revenue": 520, "delta_rev_pct": -100}, {"channel": "AI-асистенти (GEO)", "group": "site_ua", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 1, "prev_revenue": 1850, "prev_margin": 1050, "prev_cancelled": 0, "prev_aov": 1850, "pfull_revenue": 1850, "delta_rev_pct": -100}, {"channel": "SMS", "group": "site_ua", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 1, "prev_revenue": 19270, "prev_margin": 9805.79, "prev_cancelled": 0, "prev_aov": 19270, "pfull_revenue": 19270, "delta_rev_pct": -100}, {"channel": "Соцмережі DM (IG/TG/TT)", "group": "social_leads", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 0, "prev_aov": 0, "pfull_revenue": 12156, "delta_rev_pct": 0}, {"channel": "Email/TG: SendPulse", "group": "site_ua", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 0, "prev_aov": 0, "pfull_revenue": 0, "delta_rev_pct": 0}, {"channel": "Lead-форми FB/TikTok", "group": "social_leads", "cur_orders": 0, "cur_revenue": 0, "cur_margin": 0, "cur_cancelled": 0, "cur_aov": 0, "prev_orders": 0, "prev_revenue": 0, "prev_margin": 0, "prev_cancelled": 0, "prev_aov": 0, "pfull_revenue": 1235, "delta_rev_pct": 0}], "days": ["2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16"], "daily_series": {"site_ua": [960, 20880, 10160, 3130, 580, 0, 12195, 10242, 7970, 17490, 640, 8090, 33933, 26405, 15020, 19080], "bot": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 850, 0, 0, 0, 0], "b2b": [5100, 0, 41133, 23324, 5092, 15544, 2159, 0, 0, 24992, 0, 7362, 0, 400, 0, 0], "intl": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29210, 0, 0, 13110], "manual": [0, 0, 8028, 3895, 0, 0, 1370, 0, 0, 5080, 7780, 4786, 11670, 0, 0, 0], "social_leads": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "month_labels": ["Тра 26 ч.", "Чер 26", "Лип 26", "Сер 26 MTD"], "month_series": {"site_ua": [263814, 337353, 319336, 186775], "bot": [0, 0, 0, 850], "b2b": [352172, 282524, 326406, 125107], "intl": [64400, 125626, 150650, 42320], "manual": [64404, 100326, 143495, 42609], "social_leads": [8240, 2550, 13391, 0], "other": [0, 0, 0, 0]}, "families": [{"family": "Штани Gen 5.7", "cur": 94129, "prev": 106610, "delta_pct": -12}, {"family": "Штани Gen 5.6", "cur": 86583, "prev": 67264, "delta_pct": 29}, {"family": "Штани Lite", "cur": 57476, "prev": 66190, "delta_pct": -13}, {"family": "Куртки", "cur": 30532, "prev": 4903, "delta_pct": 523}, {"family": "Сорочки casual", "cur": 27370, "prev": 3403, "delta_pct": 704}, {"family": "Футболки", "cur": 18780, "prev": 24920, "delta_pct": -25}, {"family": "Головні убори", "cur": 11793, "prev": 9503, "delta_pct": 24}, {"family": "Дощовики", "cur": 10500, "prev": 1750, "delta_pct": 500}, {"family": "Фліс", "cur": 4650, "prev": 0, "delta_pct": 100}, {"family": "Білизна", "cur": 4522, "prev": 10960, "delta_pct": -59}, {"family": "Убакси", "cur": 3635, "prev": 1850, "delta_pct": 96}, {"family": "Інше", "cur": 3551, "prev": 11648, "delta_pct": -70}, {"family": "Штани інші", "cur": 2340, "prev": 1300, "delta_pct": 80}, {"family": "Шорти", "cur": 2025, "prev": 7725, "delta_pct": -74}], "top_stock": [{"sku": "781020", "name": "Дощовик пончо намет UATAC Multicam Gen 2", "sold14": 8, "stock": 20, "cover_days": 35}, {"sku": "271411", "name": "Бойова сорочка Ubacs UATAC Gen 5.7 Multicam Ripstop (Мультикам)", "sold14": 5, "stock": 0, "cover_days": 0}, {"sku": "5322101413", "name": "Футболка UATAC потовідвідна CoolAir Мультикам (Multicam)", "sold14": 4, "stock": 10, "cover_days": 35}, {"sku": "41561511", "name": "Кепка UATAC з велкро Multicam Flexible (Мультикам Еластан)", "sold14": 4, "stock": 12, "cover_days": 42}, {"sku": "172512", "name": "Штурмові штани UATAC Gen 5.7 Мультикам MM-25 Twill-Ripstop з наколінни", "sold14": 3, "stock": 19, "cover_days": 89}, {"sku": "262313", "name": "Бойова сорочка Ubacs UATAC Gen 5.6 Піксель | L", "sold14": 3, "stock": 13, "cover_days": 61}, {"sku": "55205015", "name": "Бавовняні труси UATAC Олива | XXL", "sold14": 3, "stock": 2, "cover_days": 9}, {"sku": "42251411", "name": "Панама UATAC Multicam L", "sold14": 3, "stock": 42, "cover_days": 196}, {"sku": "55205412", "name": "Труси UATAC Чорний (Black)", "sold14": 3, "stock": 29, "cover_days": 135}, {"sku": "5322101412", "name": "Футболка UATAC потовідвідна CoolAir Мультикам (Multicam)", "sold14": 3, "stock": 9, "cover_days": 42}, {"sku": "512112", "name": "Сорочка в клітинку UATAC Хакі (Khaki)", "sold14": 3, "stock": 29, "cover_days": 135}, {"sku": "512413", "name": "Сорочка в клітинку UATAC Червоний (Red)", "sold14": 3, "stock": 3, "cover_days": 14}, {"sku": "512114", "name": "Сорочка в клітинку UATAC Хакі (Khaki)", "sold14": 3, "stock": 1, "cover_days": 5}, {"sku": "7080", "name": "Ремкомплект універсальний", "sold14": 2, "stock": 105, "cover_days": 735}, {"sku": "5322101414", "name": "Футболка UATAC потовідвідна CoolAir Мультикам (Multicam)", "sold14": 2, "stock": 6, "cover_days": 42}, {"sku": "612314", "name": "Летняя куртка (Китель) UATAC Pixel | XL", "sold14": 2, "stock": 3, "cover_days": 21}, {"sku": "42255011", "name": "Панама UATAC Multicam Black (Чорний Мультикам)", "sold14": 2, "stock": 1, "cover_days": 7}, {"sku": "42255010", "name": "Панама UATAC Multicam Black (Чорний Мультикам)", "sold14": 2, "stock": 6, "cover_days": 42}, {"sku": "5322103414", "name": "Футболка UATAC потовідвідна CoolAir Олива (Olive)", "sold14": 2, "stock": 7, "cover_days": 49}, {"sku": "5322104212", "name": "Футболка UATAC потовідвідна CoolAir Койот (Coyote)", "sold14": 2, "stock": 10, "cover_days": 70}, {"sku": "5322105014", "name": "Футболка UATAC потовідвідна CoolAir Чорний Мультикам (Multicam Black)", "sold14": 2, "stock": 0, "cover_days": 0}, {"sku": "42253111", "name": "Панама UATAC Чорна L", "sold14": 2, "stock": 0, "cover_days": 0}, {"sku": "512113", "name": "Сорочка в клітинку UATAC Хакі (Khaki)", "sold14": 2, "stock": 9, "cover_days": 63}, {"sku": "512111", "name": "Сорочка в клітинку UATAC Хакі (Khaki)", "sold14": 2, "stock": 5, "cover_days": 35}, {"sku": "55205813", "name": "Труси UATAC Бірюзовий (Turquoise)", "sold14": 1, "stock": 19, "cover_days": 266}], "forecast30": {"site_ua": 354612, "bot": 1396, "b2b": 265430, "intl": 98684, "manual": 97774, "social_leads": 2592, "other": 0}, "usd_uah": 46, "forecast30_total": 820488, "insights": ["UTM-шаблон Meta зламаний: 72 замовлень у вибірці мають literal «{{fb}}» замість джерела. Фікс у Meta Ads Manager, URL parameters: utm_source=facebook&utm_medium=paid&utm_campaign={{campaign.name}}&utm_content={{ad.name}}.", "SMS дав 19 270 ₴ минулого місяця і 0 ₴ у поточному — розсилки зупинилися, канал робочий."], "tactics": ["<b>Shopify INTL<\/b> -59% (−61 180 ₴) — перевірити трафік і рекламу на uatac.shop, підняти INTL-кампанії.", "<b>B2B: дропи/дилери/маркетплейси<\/b> +65% — масштабувати: Скопик: тримати темп, зафіксувати повторні партії на осінь.", "<b>Meta Ads (FB/IG)<\/b> 0 ₴ проти 22 526 ₴ — полагодити UTM-шаблон, бюджет не піднімати доки атрибуція сліпа.", "<b>SMS<\/b> 0 ₴ проти 19 270 ₴ — перезапустити розсилки.", "<b>Google Ads (PMax/Search)<\/b> 5 скасувань на 20 продажів — розібрати причини (дублі/недозвон).", "<b>SEO (Google organic)<\/b> 3 скасувань на 9 продажів — розібрати причини (дублі/недозвон)."], "decisions": [{"id": 1, "created": "2026-08-16", "channel_key": "Офіс / телефон (ручні)", "owner": "Лера", "action": "Обдзвін топ-5 партнерів минулого місяця з осінньою пропозицією (канал −41%)", "status": "open", "manual_verdict": null, "note": "", "before": 3664, "after": null, "verdict": "pending", "effect_pct": null, "details": {"why": ["MTD: 42 609 ₴ / 13 зам. проти 72 170 ₴ / 16 зам. за той самий відрізок минулого місяця (-41%).", "Середній чек каналу 3 278 ₴, маржа MTD 23 293 ₴.", "Повний минулий місяць канал дав 143 495 ₴ — це і є орієнтир норми.", "База для оцінки: 3 664 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Вивантажити топ-5 клієнтів минулого місяця з KeyCRM за сумою.", "Обдзвін сьогодні: осіння пропозиція + нагадування про демісезон.", "Кожен дзвінок фіксувати в CRM з коментарем — інакше ефект не порахується.", "Ціль: повернути канал до рівня минулого місяця."]}}, {"id": 2, "created": "2026-08-16", "channel_key": "Meta Ads (FB/IG)", "owner": "Serhii", "action": "Полагодити UTM-шаблон Meta ({{fb}} → utm_source=facebook&utm_campaign={{campaign.name}}) + перевірити креативи; серпень = 0 замовлень", "status": "open", "manual_verdict": null, "note": "", "before": 0, "after": null, "verdict": "pending", "effect_pct": null, "details": {"why": ["MTD: 0 ₴ / 0 зам. проти 22 526 ₴ / 11 зам. за той самий відрізок минулого місяця (-100%).", "Повний минулий місяць канал дав 38 446 ₴ — це і є орієнтир норми.", "База для оцінки: 0 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Ads Manager → Налаштування кампанії → URL parameters: підставити реальні макроси кампанії/оголошення замість плейсхолдерів, що не розкриваються.", "Перевірити на тестовому кліку, що в KeyCRM приходить джерело facebook і назва кампанії, а не фігурні дужки.", "Оновити креативи (частота > 2 = вигорання), запустити 2-3 нові варіанти.", "Бюджет не піднімати, доки в CRM не видно реальних кампаній."]}}, {"id": 3, "created": "2026-08-16", "channel_key": "Google Ads (PMax/Search)", "owner": "Serhii", "action": "Масштабувати за планом T2: бюджет PMax +20% (до 840₴/день), ставки не чіпати цього тижня", "status": "open", "manual_verdict": null, "note": "", "before": 3294, "after": null, "verdict": "pending", "effect_pct": null, "details": {"why": ["MTD: 61 832 ₴ / 20 зам. проти 43 280 ₴ / 10 зам. за той самий відрізок минулого місяця (+43%).", "Середній чек каналу 3 092 ₴, маржа MTD 35 371 ₴.", "Скасувань у каналі за місяць: 5.", "Повний минулий місяць канал дав 89 146 ₴ — це і є орієнтир норми.", "База для оцінки: 3 294 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Підняти денний бюджет PMax максимум на 20% за тиждень (до 840 ₴/день).", "Ставки/tROAS цього ж тижня НЕ чіпати — два зміни одночасно ламають навчання.", "Перевірити search terms, додати мінус-слова.", "Позиції без конверсій при витраті >150 ₴ за 14 днів — виключити з фіду."]}}, {"id": 4, "created": "2026-08-16", "channel_key": "__stock__", "owner": "Антон Нестерук", "action": "Поповнити Ubacs Gen 5.7 Multicam (стокаут при 5 прод/14д); до поповнення зняти з рекламних акцентів", "status": "open", "manual_verdict": null, "note": "SKU 271411", "before": null, "after": null, "effect_pct": null, "verdict": "pending", "details": {"why": ["Позиції з нульовим залишком продовжують отримувати кліки — це прямий злив бюджету."], "how": ["Антон: перелік позицій зі стокаутом і покриттям <14 днів.", "Врахувати lead-time 1-2 місяці — замовляти зараз, а не коли закінчиться.", "До поповнення прибрати позицію з рекламних акцентів і email.", "Перевірити розмірну сітку: часто б'є не товар, а 2-3 ходових розміри."]}}, {"id": 5, "created": "2026-08-16", "channel_key": "__assort__", "owner": "Serhii", "action": "Куртки +523% — підняти в акцентах PMax asset groups та email (сезон стартував)", "status": "open", "manual_verdict": null, "note": "", "before": null, "after": null, "effect_pct": null, "verdict": "pending", "details": {"why": ["Група росте сама — підсилення дає найдешевший приріст."], "how": ["Додати групу в asset groups PMax окремим блоком.", "Поставити в найближчу email-розсилку як головний блок.", "Перевірити наявність усіх розмірів перед підняттям акценту."]}}, {"id": 6, "created": "2026-08-16", "channel_key": "SMS", "owner": "Лера", "action": "Відновити SMS-розсилки (липень дав 19 270₴, серпень = 0)", "status": "open", "manual_verdict": null, "note": "", "before": 0, "after": null, "verdict": "pending", "effect_pct": null, "details": {"why": ["MTD: 0 ₴ / 0 зам. проти 19 270 ₴ / 1 зам. за той самий відрізок минулого місяця (-100%).", "Повний минулий місяць канал дав 19 270 ₴ — це і є орієнтир норми.", "База для оцінки: 0 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Перевірити баланс і статус відправника у сервісі розсилок.", "Запустити сегмент «купували 60-180 днів тому» з осінньою пропозицією.", "Обов'язково UTM: source sms, medium sms, campaign з датою.", "Один запуск на тиждень, дивитись виручку на запуск."]}}, {"id": 7, "created": "2026-08-16", "channel_key": "Леся (AI-бот)", "owner": "Serhii", "action": "Розібрати 10 скасувань бота за 30д — схоже на дублікати замовлень, що псують статистику джерела", "status": "open", "manual_verdict": null, "note": "", "before": 106, "after": null, "verdict": "pending", "effect_pct": null, "details": {"why": ["MTD: 850 ₴ / 1 зам. проти 0 ₴ / 0 зам. за той самий відрізок минулого місяця (+100%).", "Середній чек каналу 850 ₴, маржа MTD 528 ₴.", "Скасувань у каналі за місяць: 2.", "База для оцінки: 106 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Вивантажити скасовані замовлення бота за 30 днів.", "Перевірити гіпотезу дублів: один клієнт — кілька замовлень протягом години.", "Якщо дублі — додати перевірку існуючого відкритого замовлення перед створенням нового.", "Якщо недозвон — передавати ліда менеджеру після 2 спроб."]}}, {"id": 8, "created": "2026-08-16", "channel_key": "Shopify INTL", "owner": "Serhii", "action": "Shopify INTL -59% (−61 180 ₴) — менеджер: обдзвін топ-5 клієнтів місяця сьогодні.", "status": "open", "manual_verdict": null, "before": 5290, "after": null, "effect_pct": null, "verdict": "pending", "note": "auto", "details": {"why": ["MTD: 42 320 ₴ / 3 зам. проти 103 500 ₴ / 9 зам. за той самий відрізок минулого місяця (-59%).", "Середній чек каналу 14 107 ₴, маржа MTD 28 072 ₴.", "Повний минулий місяць канал дав 150 650 ₴ — це і є орієнтир норми.", "Суми конвертовані з USD у грн за курсом 46 ₴/$.", "База для оцінки: 5 290 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Перевірити трафік і замовлення в адмінці Shopify (у KeyCRM UTM з Shopify не приходять).", "Подивитись, чи працюють INTL-кампанії та чи не впав органічний трафік на uatac.shop.", "Перевірити наявність ходових позицій у INTL-каталозі.", "Написати повторним клієнтам INTL з пропозицією осінньої лінійки."]}}, {"id": 9, "created": "2026-08-16", "channel_key": "B2B: дропи/дилери/маркетплейси", "owner": "Скопик", "action": "B2B: дропи/дилери/маркетплейси +65% — масштабувати: бюджет +20%/тиждень, ставки не чіпати.", "status": "open", "manual_verdict": null, "before": 4094, "after": null, "effect_pct": null, "verdict": "pending", "note": "auto", "details": {"why": ["MTD: 125 107 ₴ / 16 зам. проти 75 688 ₴ / 14 зам. за той самий відрізок минулого місяця (+65%).", "Середній чек каналу 7 819 ₴, маржа MTD 51 692 ₴.", "Повний минулий місяць канал дав 326 406 ₴ — це і є орієнтир норми.", "База для оцінки: 4 094 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Скопик: перелік дилерів, що замовляли минулого місяця й мовчать зараз.", "Нагадати про осінньо-зимову партію з урахуванням черги виробництва 2-4 місяці.", "Тримати умови незмінними: знижка від РРЦ, 50/50, без доставки."]}}, {"id": 10, "created": "2026-08-16", "channel_key": "SEO (Google organic)", "owner": "Serhii", "action": "SEO (Google organic) 3 скасувань на 9 продажів — розібрати причини (дублі/недозвон).", "status": "open", "manual_verdict": null, "before": 3238, "after": null, "effect_pct": null, "verdict": "pending", "note": "auto", "details": {"why": ["MTD: 29 412 ₴ / 9 зам. проти 39 542 ₴ / 13 зам. за той самий відрізок минулого місяця (-26%).", "Середній чек каналу 3 268 ₴, маржа MTD 11 207 ₴.", "Скасувань у каналі за місяць: 3.", "Повний минулий місяць канал дав 95 566 ₴ — це і є орієнтир норми.", "База для оцінки: 3 238 ₴/день за 7 днів до рішення. Вердикт з'явиться на 4-й день після дати рішення."], "how": ["Перевірити динаміку каналу за тиждень.", "Знайти конкретну причину: трафік, наявність, ціна, комунікація.", "Зафіксувати дію в журналі — ефект порахується автоматично."]}}], "campaigns": [{"channel": "Google Ads (PMax/Search)", "campaign": "google_cpc", "orders": 20, "rev": 61832.0, "canc": 5}, {"channel": "Email: Horoshop тригери", "campaign": "hs_email_abandoned_cart", "orders": 3, "rev": 18940.0, "canc": 0}, {"channel": "TikTok Ads", "campaign": "Copy 1 of Продажі| TOF| ABO | VIDEO | PANTS | ", "orders": 1, "rev": 14440.0, "canc": 0}, {"channel": "Email: Horoshop тригери", "campaign": "hs_email_registration", "orders": 1, "rev": 7390.0, "canc": 0}, {"channel": "Email: Mailchimp/інші", "campaign": "2026-06_mm25-summer_ua", "orders": 1, "rev": 5680.0, "canc": 0}, {"channel": "Telegram (Лера)", "campaign": "тактичніштаниuataclitegen2чорниймультикам(mult", "orders": 1, "rev": 5130.0, "canc": 0}, {"channel": "Email: Mailchimp/інші", "campaign": "2026-08_sale-serpen_ua", "orders": 1, "rev": 4065.0, "canc": 0}, {"channel": "TikTok органіка (Лера)", "campaign": "tik_tok", "orders": 2, "rev": 3850.0, "canc": 0}, {"channel": "TikTok Ads", "campaign": "__ШОРТИ_ФУТБОЛКА__", "orders": 1, "rev": 765.0, "canc": 1}], "intl_monthly": [{"month": "Тра 26", "orders": 5, "revenue": 64400, "cancelled": 0}, {"month": "Чер 26", "orders": 9, "revenue": 125626, "cancelled": 1}, {"month": "Лип 26", "orders": 12, "revenue": 150650, "cancelled": 0}, {"month": "Сер 26", "orders": 3, "revenue": 42320, "cancelled": 0}], "group_labels": {"site_ua": "Сайт uatac.ua", "bot": "Леся (AI-бот)", "b2b": "B2B (дропи/дилери)", "intl": "Shopify INTL", "manual": "Офіс/телефон", "social_leads": "Lead-форми/DM", "other": "Інше"}}</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const fmt = n => Math.round(n).toLocaleString('uk-UA');
+Chart.defaults.color='#A6A79A';
+const GC = {site_ua:'#F59E0B', b2b:'#4A5D43', manual:'#A69B8D', intl:'#1E3A5F', bot:'#C2410C', social_leads:'#78716C', other:'#D6D3D1'};
+
+document.getElementById('m-title').textContent = 'Бриф продажів — ' + D.month_name;
+document.getElementById('m-today').textContent = D.today;
+document.getElementById('m-period').textContent = D.period_cur.join(' → ') + ' (MTD)';
+document.getElementById('m-prev').textContent = D.period_prev.join(' → ');
+document.getElementById('f-gen').textContent = 'Згенеровано: ' + D.generated_at.slice(0,16).replace('T',' ');
+document.getElementById('hero-sub').textContent = D.month_name + ' MTD · виручка по каналах, ₴ (без скасованих)';
+document.getElementById('tbl-sub').textContent = D.month_name + ' MTD vs 1–' + D.period_prev[1].slice(8) + ' ' + D.prev_month_name;
+document.getElementById('daily-sub').textContent = D.month_name + ', грн';
+document.getElementById('fam-sub').textContent = 'MTD vs той самий відрізок ' + D.prev_month_name + ', ₴';
+document.getElementById('th-prev').textContent = D.prev_month_name.slice(0,3) + ' 1–' + D.period_prev[1].slice(8) + ', ₴';
+document.getElementById('th-pfull').textContent = D.prev_month_name.slice(0,3) + ' повн., ₴';
+
+const t=D.totals.cur, p=D.totals.prev, pf=D.totals.pfull;
+const dp=(a,b)=>b? Math.round((a-b)/b*100):0;
+const prevLbl='vs 1–'+D.period_prev[1].slice(8)+' '+D.prev_month_name.slice(0,3);
+document.getElementById('kpis').innerHTML = [
+ ['Виручка MTD', fmt(t.revenue)+' ₴', dp(t.revenue,p.revenue)],
+ ['Замовлення MTD', t.orders, dp(t.orders,p.orders)],
+ ['Середній чек', fmt(t.aov)+' ₴', dp(t.aov,p.aov)],
+ ['Маржа MTD', fmt(t.margin)+' ₴', dp(t.margin,p.margin)],
+ ['Прогноз '+D.month_name.split(' ')[0], fmt(D.forecast30_total)+' ₴', null,'fc'],
+].map(([l,v,d,cls])=>`<div class="kpi ${cls||''}"><div class="l">${l}</div><div class="v">${v}</div>
+ <div class="d ${d>0?'up':d<0?'down':''}">${d===null?(D.prev_month_name+' повний: '+fmt(pf.revenue)+' ₴'):(d>0?'▲ +':d<0?'▼ ':'')+d+'% '+prevLbl}</div></div>`).join('');
+
+document.getElementById('tactics').innerHTML = D.tactics.map(x=>`<li>${x}</li>`).join('');
+
+// Рішення місяця
+const ST={open:['st-open','ВІДКРИТО'],in_progress:['st-prog','В РОБОТІ'],done:['st-done','ЗРОБЛЕНО'],dropped:['st-drop','ЗНЯТО']};
+const VD={helped:['✅ допомогло','up'],hurt:['⚠ гірше','down'],neutral:['➖ нейтрально',''],pending:['⏳ рано','']};
+document.querySelector('#tblDec tbody').innerHTML=(D.decisions||[]).map(d=>{
+ const s=ST[d.status]||ST.open, v=VD[d.verdict]||VD.pending;
+ const zone=d.channel_key==='__stock__'?'Склад':d.channel_key==='__assort__'?'Асортимент':d.channel_key;
+ return `<tr><td class="num">${d.id}</td><td class="num">${d.created.slice(5)}</td>
+ <td style="font-size:12px"><b>${zone}</b></td><td style="font-size:12px">${d.action}</td>
+ <td style="font-size:11.5px;color:var(--stone)">${d.owner||'—'}</td>
+ <td><span class="st ${s[0]}">${s[1]}</span></td>
+ <td class="num">${d.before!=null?fmt(d.before):'—'}</td><td class="num">${d.after!=null?fmt(d.after):'—'}</td>
+ <td class="num ${d.effect_pct>0?'up':d.effect_pct<0?'down':''}">${d.effect_pct!=null?(d.effect_pct>0?'+':'')+d.effect_pct+'%':'—'}</td>
+ <td class="vd ${v[1]}">${v[0]}</td>
+ <td><button class="dbtn" data-id="${d.id}">Деталі ▸</button></td></tr>
+ <tr class="drow" id="dr${d.id}" style="display:none"><td colspan="11">
+   <div class="dwrap">
+     <div><div class="dh">Чому так</div><ul>${(d.details&&d.details.why||[]).map(x=>`<li>${x}</li>`).join('')}</ul></div>
+     <div><div class="dh">Що зробити</div><ol>${(d.details&&d.details.how||[]).map(x=>`<li>${x}</li>`).join('')}</ol></div>
+   </div></td></tr>`;}).join('');
+document.querySelectorAll('.dbtn').forEach(b=>b.addEventListener('click',()=>{
+  const r=document.getElementById('dr'+b.dataset.id), open=r.style.display!=='none';
+  r.style.display=open?'none':'table-row'; b.textContent=open?'Деталі ▸':'Згорнути ▾';
+  b.classList.toggle('on',!open);}));
+
+document.querySelector('#tblChannels tbody').innerHTML = D.channels
+ .filter(c=>c.cur_revenue>0||c.prev_revenue>0||c.pfull_revenue>0||c.cur_cancelled>0)
+ .map(c=>`<tr><td><span class="dot" style="background:${GC[c.group]}"></span>${c.channel}${c.group==='intl'?` <span style="font-size:9.5px;color:var(--stone);font-family:var(--mono)">USD×${D.usd_uah||46}</span>`:''}</td>
+  <td><span class="tag">${D.group_labels[c.group]||c.group}</span></td>
+  <td class="num">${c.cur_orders}</td><td class="num"><b>${fmt(c.cur_revenue)}</b></td>
+  <td class="num">${fmt(c.cur_aov)}</td><td class="num">${fmt(c.cur_margin)}</td>
+  <td class="num" style="color:var(--stone)">${fmt(c.prev_revenue)}</td>
+  <td class="num ${c.delta_rev_pct>0?'up':c.delta_rev_pct<0?'down':''}">${c.delta_rev_pct>0?'+':''}${c.delta_rev_pct}%</td>
+  <td class="num" style="color:var(--stone)">${fmt(c.pfull_revenue)}</td>
+  <td class="num ${c.cur_cancelled>2?'flag':''}">${c.cur_cancelled||'—'}</td></tr>`).join('');
+
+document.querySelector('#tblStock tbody').innerHTML = D.top_stock.slice(0,14).map(s=>{
+ const cls=s.cover_days<=10?'risk-hi':s.cover_days<=21?'risk':'';
+ const st=s.stock===0?'<span class="flag">СТОКАУТ</span>':s.cover_days<=10?'<span class="flag">&lt;10д</span>':s.cover_days<=21?'<span style="color:var(--amber-dk);font-weight:700">поповнити</span>':'<span class="ok">ок</span>';
+ return `<tr class="${cls}"><td>${s.name.slice(0,60)} <span style="color:var(--stone);font-family:var(--mono);font-size:10px">(${s.sku})</span></td>
+ <td class="num">${s.sold14}</td><td class="num">${s.stock}</td><td class="num">${s.cover_days>365?'365+':s.cover_days}</td><td>${st}</td></tr>`;}).join('');
+
+document.querySelector('#tblCamp tbody').innerHTML=(D.campaigns||[]).map(c=>`<tr>
+ <td style="font-size:11px;color:var(--stone)">${c.channel.replace(' (PMax/Search)','').replace(' (FB/IG)','')}</td>
+ <td style="font-size:11.5px">${c.campaign}</td><td class="num">${c.orders}</td>
+ <td class="num"><b>${fmt(c.rev)}</b></td><td class="num ${c.canc>2?'flag':''}">${c.canc||'—'}</td></tr>`).join('');
+document.querySelector('#tblIntl tbody').innerHTML=(D.intl_monthly||[]).map(r=>`<tr>
+ <td>${r.month}</td><td class="num">${r.orders}</td><td class="num"><b>${fmt(r.revenue)}</b></td>
+ <td class="num">${r.cancelled||'—'}</td></tr>`).join('');
+document.getElementById('intlSub').textContent='по місяцях, USD→грн';
+document.getElementById('intlNote').textContent='Суми конвертовані з USD у грн за курсом '+(D.usd_uah||46)+' ₴/$. UTM у синку Shopify→KeyCRM відсутні — джерела INTL тягнемо з аналітики Shopify окремим кроком.';
+document.getElementById('insights').innerHTML = D.insights.map(i=>`<li>${i}</li>`).join('') || '<li>Проблем з мітками не виявлено.</li>';
+
+function safe(fn){try{fn()}catch(e){console.error(e)}}
+const legend={position:'bottom',labels:{boxWidth:10,font:{size:10}}};
+
+// ГОЛОВНА: канали horizontal bar
+safe(()=>{
+const top=D.channels.filter(c=>c.cur_revenue>0).slice(0,10);
+const tot=top.reduce((s,c)=>s+c.cur_revenue,0);
+new Chart(chChannels,{type:'bar',data:{
+ labels:top.map(c=>c.channel.length>30?c.channel.slice(0,29)+'…':c.channel),
+ datasets:[{data:top.map(c=>c.cur_revenue),backgroundColor:top.map(c=>GC[c.group]),borderWidth:0,barPercentage:.78}]},
+ options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const ch=top[c.dataIndex];
+    return ` ${fmt(c.parsed.x)} ₴ · ${Math.round(c.parsed.x/D.totals.cur.revenue*100)}% · ${ch.cur_orders} зам. · Δ${ch.delta_rev_pct>0?'+':''}${ch.delta_rev_pct}%`;}}}},
+  scales:{x:{ticks:{callback:v=>fmt(v)},grid:{color:'#262820'}},
+          y:{grid:{display:false},ticks:{font:{size:11.5,weight:'600'}}}}}});});
+
+safe(()=>{
+const gsum={};for(const g in D.daily_series)gsum[g]=D.daily_series[g].reduce((a,b)=>a+b,0);
+const gl=Object.keys(gsum).filter(g=>gsum[g]>0);
+new Chart(chDonut,{type:'doughnut',data:{labels:gl.map(g=>D.group_labels[g]),
+ datasets:[{data:gl.map(g=>gsum[g]),backgroundColor:gl.map(g=>GC[g]),borderColor:'#0D0E0B',borderWidth:2}]},
+ options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+  plugins:{legend,tooltip:{callbacks:{label:c=>` ${c.label}: ${fmt(c.parsed)} ₴ (${Math.round(c.parsed/gl.reduce((s,g)=>s+gsum[g],0)*100)}%)`}}}}});});
+
+safe(()=>{
+new Chart(chDaily,{type:'bar',data:{labels:D.days.map(d=>d.slice(8)),
+ datasets:Object.keys(D.daily_series).filter(g=>D.daily_series[g].some(v=>v>0)).map(g=>({
+  label:D.group_labels[g],data:D.daily_series[g],backgroundColor:GC[g],stack:'s',borderWidth:0}))},
+ options:{responsive:true,maintainAspectRatio:false,
+  plugins:{legend,tooltip:{callbacks:{footer:i=>'Разом: '+fmt(i.reduce((s,x)=>s+x.parsed.y,0))+' ₴'}}},
+  scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9}}},
+          y:{stacked:true,ticks:{callback:v=>fmt(v)},grid:{color:'#262820'}}}}});});
+
+safe(()=>{
+new Chart(chMonth,{type:'bar',data:{labels:D.month_labels,
+ datasets:Object.keys(D.month_series).filter(g=>D.month_series[g].some(v=>v>0)).map(g=>({
+  label:D.group_labels[g],data:D.month_series[g],backgroundColor:GC[g],stack:'m',borderWidth:0}))},
+ options:{responsive:true,maintainAspectRatio:false,
+  plugins:{legend,tooltip:{callbacks:{footer:i=>'Разом: '+fmt(i.reduce((s,x)=>s+x.parsed.y,0))+' ₴'}}},
+  scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,ticks:{callback:v=>fmt(v)},grid:{color:'#262820'}}}}});});
+
+safe(()=>{
+const fg=Object.keys(D.forecast30).filter(g=>D.forecast30[g]>0);
+new Chart(chFc,{type:'bar',data:{labels:fg.map(g=>D.group_labels[g]),
+ datasets:[{data:fg.map(g=>D.forecast30[g]),backgroundColor:fg.map(g=>GC[g])}]},
+ options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},title:{display:true,text:'Разом: '+fmt(D.forecast30_total)+' ₴ · залишилось днів: '+D.rem_days,font:{size:12,weight:'700'}},
+   tooltip:{callbacks:{label:c=>' '+fmt(c.parsed.x)+' ₴'}}},
+  scales:{x:{ticks:{callback:v=>fmt(v)},grid:{color:'#262820'}},y:{grid:{display:false},ticks:{font:{size:10.5}}}}}});});
+
+safe(()=>{
+const fams=D.families.filter(f=>f.cur>0||f.prev>0);
+new Chart(chFam,{type:'bar',data:{labels:fams.map(f=>f.family),
+ datasets:[{label:'MTD',data:fams.map(f=>f.cur),backgroundColor:'#F59E0B'},
+  {label:D.prev_month_name+' (той самий відрізок)',data:fams.map(f=>f.prev),backgroundColor:'#4A4B41'}]},
+ options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend},
+  scales:{x:{ticks:{callback:v=>fmt(v)},grid:{color:'#262820'}},y:{ticks:{font:{size:10.5}},grid:{display:false}}}}});});
+</script>
+</body>
+</html>
