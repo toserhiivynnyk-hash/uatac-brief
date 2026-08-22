@@ -1,0 +1,72 @@
+name: UATAC Sales Brief
+
+on:
+  schedule:
+    # 04:00 UTC = 07:00 Київ (літній час UTC+3). Взимку буде 06:00 Київ.
+    - cron: '0 4 * * *'
+  workflow_dispatch:        # кнопка «Run workflow» для запуску вручну
+
+permissions:
+  contents: write
+
+concurrency:
+  group: brief
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Оновити базу «рік до року» (раз на тиждень)
+        env:
+          KEYCRM_TOKEN: ${{ secrets.KEYCRM_TOKEN }}
+          UATAC_BASELINE: baseline.json
+          UATAC_BASELINE_RAW: .cache/keycrm_long.json
+        run: |
+          if [ ! -f baseline.json ] || [ -n "$(find baseline.json -mtime +6)" ]; then
+            echo "Перебудовую baseline (потрібно раз на тиждень)…"
+            python3 scripts/baseline.py --days 540 --refetch
+          else
+            echo "baseline.json свіжий — пропускаю."
+          fi
+
+      - name: Зібрати бриф
+        env:
+          KEYCRM_TOKEN: ${{ secrets.KEYCRM_TOKEN }}
+          UATAC_RAW: .cache/keycrm_raw.json
+          UATAC_OUT: .out
+          UATAC_DECISIONS: decisions.json
+          UATAC_HISTORY: history.csv
+          UATAC_MONTH_TARGET: ${{ vars.UATAC_MONTH_TARGET }}
+          UATAC_BASELINE: baseline.json
+          UATAC_SPEND: spend.json
+          UATAC_PLAYBOOK: playbook.json
+        run: |
+          python3 scripts/daily_brief.py --days 130
+          cp .out/index.html index.html
+
+      - name: Закомітити, якщо щось змінилось
+        run: |
+          git config user.name  "UATAC Brief Bot"
+          git config user.email "bot@uatac.ua"
+          for f in index.html decisions.json history.csv baseline.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if git diff --staged --quiet; then
+            echo "Змін немає — коміт не потрібен."
+          else
+            git commit -m "Бриф $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Підсумок у лог
+        if: always()
+        run: |
+          echo "URL https://toserhiivynnyk-hash.github.io/uatac-brief/"
