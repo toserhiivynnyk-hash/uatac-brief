@@ -1,0 +1,170 @@
+<body>
+<div class="page">
+
+<div class="lede">
+  <div class="eyebrow" id="eyebrow"></div>
+  <h1 id="lede"></h1>
+  <div class="sub" id="ledeSub"></div>
+</div>
+
+<div class="trio">
+  <div class="t" id="tMoney"></div>
+  <div class="t" id="tPlan"></div>
+  <div class="t" id="tRisk"></div>
+</div>
+
+<div class="rail">
+  <a href="#s-lev">Важелі</a><a href="#s-fun">Воронки</a><a href="#s-plan">План дій</a>
+  <a href="#s-src">Джерела</a><a href="#s-det">Деталі</a>
+  <span class="flabel" style="margin-left:12px">Період розділів нижче</span>
+  <div class="seg" id="segPeriod">
+    <button data-p="7d">7Д</button><button data-p="14d">14Д</button>
+    <button data-p="mtd" class="on">MTD</button><button data-p="prev">Мин. міс.</button>
+    <button data-p="90d">90Д</button><button data-p="custom">Свій</button>
+  </div>
+  <div class="frange" id="frange"><input type="date" id="dFrom"><span class="flabel">→</span><input type="date" id="dTo"></div>
+  <input type="search" id="qSearch" placeholder="пошук: канал / SKU / кампанія" style="width:220px;margin-left:auto">
+  <button class="btn" onclick="window.print()">⎙ PDF</button>
+</div>
+
+<section id="s-lev" style="padding-top:22px">
+  <div class="sh"><h2>Три важелі росту</h2>
+    <span class="note">Виручка = Замовлення × Середній чек × (1 − скасування) · порівняння з тим самим відрізком минулого року</span></div>
+  <div class="fgrid" id="levers"></div>
+  <div class="card" id="leverNote" style="margin-top:12px"></div>
+</section>
+
+<!-- ═══ ВОРОНКИ ═══ -->
+<section id="s-fun">
+  <div class="sh"><h2>Воронки — що і як перформить</h2>
+    <span class="note" id="funNote"></span></div>
+  <div class="fgrid" id="funnels"></div>
+</section>
+
+<!-- ═══ ПЛАН ДІЙ ═══ -->
+<section id="s-plan">
+  <div class="sh"><h2>План дій</h2>
+    <span class="note">кожне завдання має виконавця, спосіб, ціль і результат</span></div>
+  <div class="tabs" id="planTabs">
+    <button data-t="tactical" class="on">Тактика · день–тиждень</button>
+    <button data-t="strategic">Стратегія · місяць–квартал</button>
+    <button data-t="all">Все</button>
+  </div>
+  <div id="plan"></div>
+</section>
+
+<!-- ═══ ДЖЕРЕЛА ═══ -->
+<section id="s-src">
+  <div class="sh"><h2>Звідки йдуть гроші</h2><span class="note" id="srcNote"></span></div>
+  <div class="card" id="srcLines"></div>
+</section>
+
+<!-- ═══ ДЕТАЛІ ═══ -->
+<section id="s-det">
+  <div class="sh"><h2>Деталі</h2><span class="note">клік по заголовку = сортування · клік по рядку = деталізація каналу</span></div>
+  <div class="mods" id="mods">
+    <button data-m="src" class="on">Канали</button>
+    <button data-m="pipe">Воронка «в роботі»</button>
+    <button data-m="dyn">Динаміка</button>
+    <button data-m="prod">Товари</button>
+    <button data-m="camp">Кампанії</button>
+    <button data-m="canc">Скасування</button>
+    <button data-m="stock">Склад</button>
+    <button data-m="dec">Журнал рішень</button>
+    <button data-m="hyg">Гігієна</button>
+  </div>
+  <div class="card">
+    <div class="mod on" data-m="src">
+      <table id="tblChannels"><thead><tr>
+        <th class="s" data-k="channel">Канал</th><th>Група</th>
+        <th class="num s" data-k="orders">Зам.</th><th class="num s" data-k="revenue">Виручка ₴</th>
+        <th class="num s" data-k="aov">AOV</th><th class="num s" data-k="margin">Маржа ₴</th>
+        <th class="num s" data-k="mrate">М%</th><th class="num s" data-k="prev">Було ₴</th>
+        <th class="num s" data-k="delta">Δ</th><th class="num s" data-k="pipe">В роботі ₴</th>
+        <th class="num s" data-k="cancelled">Скас.</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="mod" data-m="pipe">
+      <div class="blist" id="pipeByCh" style="margin-bottom:16px"></div>
+      <div class="dh" id="staleHd">Зависло</div>
+      <table id="tblStale"><thead><tr><th class="s" data-k="id">№</th><th class="s" data-k="created">Створено</th>
+        <th class="num s" data-k="age">Днів</th><th class="s" data-k="status">Статус</th>
+        <th class="s" data-k="channel">Канал</th><th class="num s" data-k="sum">Сума ₴</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="mod" data-m="dyn">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div><div class="dh">Виручка по днях × групи</div><div class="chart"><canvas id="chDaily"></canvas></div></div>
+        <div><div class="dh">По місяцях</div><div class="chart"><canvas id="chMonth"></canvas></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px">
+        <div><div class="dh">Прогноз до кінця місяця</div><div class="chart sm"><canvas id="chFc"></canvas></div></div>
+        <div><div class="dh">Shopify INTL по місяцях</div>
+          <table id="tblIntl"><thead><tr><th>Місяць</th><th class="num">Зам.</th>
+            <th class="num">Виручка ₴</th><th class="num">Скас.</th></tr></thead><tbody></tbody></table>
+          <div style="font:10px var(--mono);color:var(--ink-3);margin-top:9px;line-height:1.6" id="intlNote"></div></div>
+      </div>
+    </div>
+    <div class="mod" data-m="prod">
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:18px">
+        <div><div class="dh">Товарні групи · період vs попередній</div><div class="chart lg"><canvas id="chFam"></canvas></div></div>
+        <div><div class="dh">Топ SKU за період</div>
+          <table id="tblTopSku"><thead><tr><th class="s" data-k="name">Товар</th>
+            <th class="num s" data-k="qty">Шт.</th><th class="num s" data-k="rev">₴</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+    <div class="mod" data-m="camp">
+      <table id="tblCamp"><thead><tr>
+        <th class="s" data-k="channel">Канал</th><th class="s" data-k="campaign">Кампанія</th>
+        <th class="num s" data-k="orders">Зам.</th><th class="num s" data-k="rev">Виручка ₴</th>
+        <th class="num s" data-k="aov">AOV</th><th class="num s" data-k="canc">Скас.</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="mod" data-m="canc">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div><div class="dh">Причини</div><div class="blist" id="cancReasons"></div></div>
+        <div><div class="dh">Канали з найбільшою часткою скасувань</div>
+          <table id="tblCancCh"><thead><tr><th class="s" data-k="channel">Канал</th>
+            <th class="num s" data-k="orders">Продажі</th><th class="num s" data-k="cancelled">Скас.</th>
+            <th class="num s" data-k="rate">Частка</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+    <div class="mod" data-m="stock">
+      <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center">
+        <span class="flabel">Фільтр</span>
+        <div class="seg" id="segStock"><button data-f="all" class="on">Все</button>
+          <button data-f="risk">Ризик</button><button data-f="out">Стокаут</button></div>
+      </div>
+      <table id="tblStock"><thead><tr><th class="s" data-k="name">Товар (SKU)</th>
+        <th class="num s" data-k="sold14">Прод. 14д</th><th class="num s" data-k="stock">Залишок</th>
+        <th class="num s" data-k="cover_days">Покриття</th><th>Статус</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="mod" data-m="dec">
+      <table id="tblDec"><thead><tr>
+        <th class="num s" data-k="id">№</th><th class="s" data-k="created">Дата</th>
+        <th class="s" data-k="zone">Зона</th><th>Дія</th><th class="s" data-k="owner">Відп.</th>
+        <th class="s" data-k="status">Статус</th><th class="num s" data-k="before">До ₴/д</th>
+        <th class="num s" data-k="after">Після ₴/д</th><th class="num s" data-k="effect_pct">Ефект</th>
+        <th class="s" data-k="verdict">Вердикт</th><th></th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="mod" data-m="hyg"><div id="insights"></div></div>
+  </div>
+</section>
+
+<footer>
+  <span>UATAC — внутрішній документ · джерело правди: KeyCRM (закриті угоди) · оновлюється автоматично щодня о 07:00</span>
+  <span id="f-gen"></span>
+</footer>
+</div>
+
+<div class="dd" id="dd">
+  <div class="dd-bg" data-close></div>
+  <div class="dd-panel">
+    <div class="dd-hd">
+      <button class="dd-close" data-close>✕</button>
+      <div class="k">Деталізація каналу</div>
+      <h3 id="ddTitle"></h3>
+      <div style="font:10.5px var(--mono);color:var(--ink-3);margin-top:4px" id="ddPeriod"></div>
+    </div>
+    <div id="ddBody"></div>
+  </div>
+</div>
+
+<script id="data" type="application/json">__DATA_JSON__</script>
