@@ -135,9 +135,9 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 648,
-   "effect_pct": -41,
-   "verdict": "hurt",
+   "after": 940,
+   "effect_pct": -14,
+   "verdict": "neutral",
    "note": "auto"
   },
   {
