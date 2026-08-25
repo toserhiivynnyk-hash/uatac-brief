@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 4159,
+   "after": 3697,
    "verdict": "neutral",
-   "effect_pct": 13
+   "effect_pct": 1
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 230,
+   "after": 204,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1156,
-   "after": 5325,
+   "after": 4733,
    "verdict": "helped",
-   "effect_pct": 360
+   "effect_pct": 309
   },
   {
    "id": 4,
@@ -121,9 +121,9 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 2131,
-   "effect_pct": -68,
-   "verdict": "hurt",
+   "after": 8050,
+   "effect_pct": 19,
+   "verdict": "helped",
    "note": "auto"
   },
   {
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 627,
-   "effect_pct": -42,
+   "after": 907,
+   "effect_pct": -17,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -149,6 +149,20 @@
    "status": "open",
    "manual_verdict": null,
    "before": null,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
+   "note": "auto"
+  },
+  {
+   "id": 12,
+   "created": "2026-08-25",
+   "channel_key": "Email: Horoshop тригери",
+   "owner": "Лера",
+   "action": "Email: Horoshop тригери +354% — масштабувати: бюджет +20%/тиждень, ставки не чіпати.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 1054,
    "after": null,
    "effect_pct": null,
    "verdict": "pending",
