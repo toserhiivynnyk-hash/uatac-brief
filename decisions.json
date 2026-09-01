@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 4903,
+   "after": 4596,
    "verdict": "helped",
-   "effect_pct": 34
+   "effect_pct": 25
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 756,
+   "after": 709,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 6306,
+   "after": 5912,
    "verdict": "helped",
-   "effect_pct": 486
+   "effect_pct": 449
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 88,
+   "after": 82,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 0,
-   "effect_pct": -100,
+   "after": 1166,
+   "effect_pct": -61,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 12177,
-   "effect_pct": 81,
+   "after": 15608,
+   "effect_pct": 132,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2682,
-   "effect_pct": 146,
+   "after": 2490,
+   "effect_pct": 129,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,9 +163,23 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 773,
-   "effect_pct": -27,
+   "after": 663,
+   "effect_pct": -37,
    "verdict": "hurt",
+   "note": "auto"
+  },
+  {
+   "id": 13,
+   "created": "2026-09-01",
+   "channel_key": "Direct (прямі заходи)",
+   "owner": "Serhii",
+   "action": "Direct (прямі заходи) 0 ₴ проти 6 070 ₴ — перезапустити розсилки.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 2942,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
    "note": "auto"
   }
  ]
