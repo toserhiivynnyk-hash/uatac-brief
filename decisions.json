@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 4154,
-   "verdict": "neutral",
-   "effect_pct": 13
+   "after": 4326,
+   "verdict": "helped",
+   "effect_pct": 18
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 741,
+   "after": 706,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 5158,
+   "after": 4970,
    "verdict": "helped",
-   "effect_pct": 379
+   "effect_pct": 362
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 66,
+   "after": 63,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 907,
-   "effect_pct": -70,
+   "after": 859,
+   "effect_pct": -71,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 14071,
-   "effect_pct": 109,
+   "after": 13330,
+   "effect_pct": 98,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2187,
-   "effect_pct": 101,
+   "after": 2267,
+   "effect_pct": 108,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,9 +163,9 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 676,
-   "effect_pct": -36,
-   "verdict": "hurt",
+   "after": 932,
+   "effect_pct": -12,
+   "verdict": "neutral",
    "note": "auto"
   },
   {
@@ -177,9 +177,23 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 1998,
-   "effect_pct": -32,
+   "after": 1598,
+   "effect_pct": -46,
    "verdict": "hurt",
+   "note": "auto"
+  },
+  {
+   "id": 14,
+   "created": "2026-09-06",
+   "channel_key": "Email: Mailchimp/інші",
+   "owner": "Лера",
+   "action": "Email: Mailchimp/інші -57% — перевірити, чи не впав трафік/наявність топових позицій.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 307,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
    "note": "auto"
   }
  ]
