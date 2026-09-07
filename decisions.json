@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 4326,
-   "verdict": "helped",
-   "effect_pct": 18
+   "after": 4130,
+   "verdict": "neutral",
+   "effect_pct": 13
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 706,
+   "after": 674,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4970,
+   "after": 4744,
    "verdict": "helped",
-   "effect_pct": 362
+   "effect_pct": 341
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 63,
+   "after": 60,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 859,
-   "effect_pct": -71,
+   "after": 816,
+   "effect_pct": -73,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 13330,
-   "effect_pct": 98,
+   "after": 13053,
+   "effect_pct": 94,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2267,
-   "effect_pct": 108,
+   "after": 2153,
+   "effect_pct": 98,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,9 +163,9 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 932,
-   "effect_pct": -12,
-   "verdict": "neutral",
+   "after": 861,
+   "effect_pct": -18,
+   "verdict": "hurt",
    "note": "auto"
   },
   {
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 1598,
-   "effect_pct": -46,
+   "after": 1332,
+   "effect_pct": -55,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -191,6 +191,20 @@
    "status": "open",
    "manual_verdict": null,
    "before": 307,
+   "after": 0,
+   "effect_pct": -100,
+   "verdict": "pending",
+   "note": "auto"
+  },
+  {
+   "id": 15,
+   "created": "2026-09-07",
+   "channel_key": "Соцмережі DM (IG/TG/TT)",
+   "owner": "Serhii",
+   "action": "Соцмережі DM (IG/TG/TT) -96% — перевірити, чи не впав трафік/наявність топових позицій.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 65,
    "after": null,
    "effect_pct": null,
    "verdict": "pending",
