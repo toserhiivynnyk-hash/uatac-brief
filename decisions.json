@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 4177,
+   "after": 4003,
    "verdict": "neutral",
-   "effect_pct": 14
+   "effect_pct": 9
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 645,
+   "after": 618,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4538,
+   "after": 4522,
    "verdict": "helped",
-   "effect_pct": 322
+   "effect_pct": 320
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 57,
+   "after": 55,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 778,
-   "effect_pct": -74,
+   "after": 742,
+   "effect_pct": -75,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 12431,
-   "effect_pct": 84,
+   "after": 12353,
+   "effect_pct": 83,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2051,
-   "effect_pct": 88,
+   "after": 1957,
+   "effect_pct": 80,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 799,
-   "effect_pct": -24,
+   "after": 746,
+   "effect_pct": -29,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 1141,
-   "effect_pct": -61,
+   "after": 999,
+   "effect_pct": -66,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -207,6 +207,20 @@
    "before": 65,
    "after": 0,
    "effect_pct": -100,
+   "verdict": "pending",
+   "note": "auto"
+  },
+  {
+   "id": 16,
+   "created": "2026-09-09",
+   "channel_key": "Сайт без UTM (direct/втрачено)",
+   "owner": "Serhii",
+   "action": "Сайт без UTM (direct/втрачено) -100% — перевірити, чи не впав трафік/наявність топових позицій.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 0,
+   "after": null,
+   "effect_pct": null,
    "verdict": "pending",
    "note": "auto"
   }
