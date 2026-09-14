@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3431,
+   "after": 3660,
    "verdict": "neutral",
-   "effect_pct": -6
+   "effect_pct": 0
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 529,
+   "after": 511,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4118,
+   "after": 3976,
    "verdict": "helped",
-   "effect_pct": 283
+   "effect_pct": 269
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 47,
+   "after": 46,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 628,
-   "effect_pct": -79,
+   "after": 605,
+   "effect_pct": -80,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 10913,
-   "effect_pct": 62,
+   "after": 10509,
+   "effect_pct": 56,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2360,
-   "effect_pct": 117,
+   "after": 2561,
+   "effect_pct": 135,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 589,
-   "effect_pct": -44,
+   "after": 560,
+   "effect_pct": -47,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 719,
-   "effect_pct": -76,
+   "after": 664,
+   "effect_pct": -77,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -232,9 +232,9 @@
    "action": "Google інше (referral) +100% — масштабувати: бюджет +20%/тиждень, ставки не чіпати.",
    "status": "open",
    "manual_verdict": null,
-   "before": 2635,
-   "after": null,
-   "effect_pct": null,
+   "before": 2700,
+   "after": 0,
+   "effect_pct": -100,
    "verdict": "pending",
    "note": "auto"
   }
