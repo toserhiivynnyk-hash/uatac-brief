@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3538,
+   "after": 3811,
    "verdict": "neutral",
-   "effect_pct": -3
+   "effect_pct": 4
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 494,
+   "after": 478,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 3885,
+   "after": 3986,
    "verdict": "helped",
-   "effect_pct": 261
+   "effect_pct": 270
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 44,
+   "after": 43,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 583,
-   "effect_pct": -80,
+   "after": 563,
+   "effect_pct": -81,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 11009,
-   "effect_pct": 63,
+   "after": 11499,
+   "effect_pct": 71,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2469,
-   "effect_pct": 127,
+   "after": 2384,
+   "effect_pct": 119,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 533,
-   "effect_pct": -49,
+   "after": 509,
+   "effect_pct": -52,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 616,
-   "effect_pct": -79,
+   "after": 575,
+   "effect_pct": -80,
    "verdict": "hurt",
    "note": "auto"
   },
