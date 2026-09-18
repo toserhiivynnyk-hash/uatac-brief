@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3710,
+   "after": 3598,
    "verdict": "neutral",
-   "effect_pct": 1
+   "effect_pct": -2
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 463,
+   "after": 449,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,7 +38,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4155,
+   "after": 4154,
    "verdict": "helped",
    "effect_pct": 286
   },
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 41,
+   "after": 40,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,7 +107,7 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 544,
+   "after": 527,
    "effect_pct": -82,
    "verdict": "hurt",
    "note": "auto"
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 12377,
-   "effect_pct": 84,
+   "after": 14449,
+   "effect_pct": 114,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2564,
-   "effect_pct": 135,
+   "after": 2779,
+   "effect_pct": 155,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 487,
-   "effect_pct": -54,
+   "after": 521,
+   "effect_pct": -51,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 539,
-   "effect_pct": -82,
+   "after": 1047,
+   "effect_pct": -64,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -236,6 +236,20 @@
    "after": 0,
    "effect_pct": -100,
    "verdict": "hurt",
+   "note": "auto"
+  },
+  {
+   "id": 18,
+   "created": "2026-09-18",
+   "channel_key": "TikTok Ads",
+   "owner": "Serhii",
+   "action": "TikTok Ads 3 скасувань на 2 продажів — розібрати причини (дублі/недозвон).",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 60,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
    "note": "auto"
   }
  ]
