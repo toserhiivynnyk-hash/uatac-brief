@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3598,
+   "after": 3829,
    "verdict": "neutral",
-   "effect_pct": -2
+   "effect_pct": 4
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 449,
+   "after": 436,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4154,
+   "after": 4070,
    "verdict": "helped",
-   "effect_pct": 286
+   "effect_pct": 278
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 40,
+   "after": 39,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 527,
-   "effect_pct": -82,
+   "after": 510,
+   "effect_pct": -83,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 14449,
-   "effect_pct": 114,
+   "after": 14182,
+   "effect_pct": 110,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2779,
-   "effect_pct": 155,
+   "after": 2692,
+   "effect_pct": 147,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 521,
-   "effect_pct": -51,
+   "after": 500,
+   "effect_pct": -53,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 1047,
-   "effect_pct": -64,
+   "after": 988,
+   "effect_pct": -66,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -247,6 +247,20 @@
    "status": "open",
    "manual_verdict": null,
    "before": 60,
+   "after": 0,
+   "effect_pct": -100,
+   "verdict": "pending",
+   "note": "auto"
+  },
+  {
+   "id": 19,
+   "created": "2026-09-19",
+   "channel_key": "AI-асистенти (GEO)",
+   "owner": "Serhii",
+   "action": "AI-асистенти (GEO) 0 ₴ проти 10 100 ₴ — перезапустити розсилки.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 0,
    "after": null,
    "effect_pct": null,
    "verdict": "pending",
