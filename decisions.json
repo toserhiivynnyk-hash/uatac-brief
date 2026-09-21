@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3719,
+   "after": 3616,
    "verdict": "neutral",
-   "effect_pct": 1
+   "effect_pct": -1
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 424,
+   "after": 412,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 4165,
+   "after": 5049,
    "verdict": "helped",
-   "effect_pct": 287
+   "effect_pct": 369
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 38,
+   "after": 37,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 495,
-   "effect_pct": -83,
+   "after": 480,
+   "effect_pct": -84,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 13767,
-   "effect_pct": 104,
+   "after": 13430,
+   "effect_pct": 99,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 2873,
-   "effect_pct": 164,
+   "after": 3138,
+   "effect_pct": 188,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 481,
-   "effect_pct": -54,
+   "after": 713,
+   "effect_pct": -32,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 936,
-   "effect_pct": -68,
+   "after": 890,
+   "effect_pct": -70,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -261,7 +261,7 @@
    "status": "open",
    "manual_verdict": null,
    "before": 0,
-   "after": 0,
+   "after": 875,
    "effect_pct": null,
    "verdict": "pending",
    "note": "auto"
