@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 3518,
+   "after": 3426,
    "verdict": "neutral",
-   "effect_pct": -4
+   "effect_pct": -7
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 401,
+   "after": 590,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 5009,
+   "after": 4890,
    "verdict": "helped",
-   "effect_pct": 365
+   "effect_pct": 354
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 36,
+   "after": 35,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 467,
-   "effect_pct": -84,
+   "after": 454,
+   "effect_pct": -85,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 13047,
-   "effect_pct": 94,
+   "after": 15118,
+   "effect_pct": 124,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 3048,
-   "effect_pct": 180,
+   "after": 2963,
+   "effect_pct": 172,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 688,
-   "effect_pct": -35,
+   "after": 664,
+   "effect_pct": -37,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 847,
-   "effect_pct": -71,
+   "after": 809,
+   "effect_pct": -73,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -261,9 +261,9 @@
    "status": "open",
    "manual_verdict": null,
    "before": 0,
-   "after": 583,
-   "effect_pct": null,
-   "verdict": "pending",
+   "after": 438,
+   "effect_pct": 100,
+   "verdict": "helped",
    "note": "auto"
   }
  ]
