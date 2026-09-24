@@ -3,7 +3,7 @@ name: UATAC Sales Brief
 on:
   schedule:
     # 04:00 UTC = 07:00 Київ (літній час UTC+3). Взимку буде 06:00 Київ.
-    - cron: '0 4 * * *'
+    - cron: '0 4 * * 1'
   workflow_dispatch:        # кнопка «Run workflow» для запуску вручну
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
           UATAC_SPEND: spend.json
           UATAC_PLAYBOOK: playbook.json
         run: |
-          python3 scripts/daily_brief.py --days 130
+          python3 scripts/daily_brief.py --days 185
           cp .out/index.html index.html
 
       - name: Закомітити, якщо щось змінилось
