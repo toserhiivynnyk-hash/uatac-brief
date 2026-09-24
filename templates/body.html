@@ -16,19 +16,20 @@
 <div class="rail">
   <a href="#s-lev">Важелі</a><a href="#s-fun">Воронки</a><a href="#s-plan">План дій</a>
   <a href="#s-src">Джерела</a><a href="#s-det">Деталі</a>
-  <span class="flabel" style="margin-left:12px">Період розділів нижче</span>
+  <span class="flabel" style="margin-left:12px">Період для «Джерела» і «Деталі»</span>
   <div class="seg" id="segPeriod">
     <button data-p="7d">7Д</button><button data-p="14d">14Д</button>
     <button data-p="mtd" class="on">MTD</button><button data-p="prev">Мин. міс.</button>
-    <button data-p="90d">90Д</button><button data-p="custom">Свій</button>
+    <button data-p="30d">30Д</button><button data-p="90d">90Д</button><button data-p="custom">Свій</button>
   </div>
+  <span class="psum" id="periodSum"></span>
   <div class="frange" id="frange"><input type="date" id="dFrom"><span class="flabel">→</span><input type="date" id="dTo"></div>
   <input type="search" id="qSearch" placeholder="пошук: канал / SKU / кампанія" style="width:220px;margin-left:auto">
   <button class="btn" onclick="window.print()">⎙ PDF</button>
 </div>
 
 <section id="s-lev" style="padding-top:22px">
-  <div class="sh"><h2>Три важелі росту</h2>
+  <div class="sh"><h2>Три важелі росту <span class="fixed">поточний місяць</span></h2>
     <span class="note">Виручка = Замовлення × Середній чек × (1 − скасування) · порівняння з тим самим відрізком минулого року</span></div>
   <div class="fgrid" id="levers"></div>
   <div class="card" id="leverNote" style="margin-top:12px"></div>
@@ -36,14 +37,14 @@
 
 <!-- ═══ ВОРОНКИ ═══ -->
 <section id="s-fun">
-  <div class="sh"><h2>Воронки — що і як перформить</h2>
+  <div class="sh"><h2>Воронки — що і як перформить <span class="fixed">поточний місяць</span></h2>
     <span class="note" id="funNote"></span></div>
   <div class="fgrid" id="funnels"></div>
 </section>
 
 <!-- ═══ ПЛАН ДІЙ ═══ -->
 <section id="s-plan">
-  <div class="sh"><h2>План дій</h2>
+  <div class="sh"><h2>План дій <span class="fixed">не залежить від періоду</span></h2>
     <span class="note">кожне завдання має виконавця, спосіб, ціль і результат</span></div>
   <div class="tabs" id="planTabs">
     <button data-t="tactical" class="on">Тактика · день–тиждень</button>

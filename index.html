@@ -256,6 +256,10 @@ footer{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);display
   .chart{height:180px}
   @page{size:A4;margin:9mm}
 }
+.psum{font:11px var(--mono);color:var(--ink-2,#C3C5B6);white-space:nowrap;padding:3px 8px;border:1px solid #2c3124;border-radius:3px}
+.psum b{color:#fff}.psum .up{color:#8fd694}.psum .dn{color:#ff9aa4}
+.psum.flash{animation:psf .6s}@keyframes psf{from{background:#3a4a22}to{background:transparent}}
+.sh h2 .fixed{font:10px var(--mono);letter-spacing:.04em;color:var(--ink-3,#8a8d7c);border:1px solid #2c3124;padding:2px 6px;border-radius:3px;margin-left:8px;vertical-align:middle;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -276,19 +280,20 @@ footer{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);display
 <div class="rail">
   <a href="#s-lev">Важелі</a><a href="#s-fun">Воронки</a><a href="#s-plan">План дій</a>
   <a href="#s-src">Джерела</a><a href="#s-det">Деталі</a>
-  <span class="flabel" style="margin-left:12px">Період розділів нижче</span>
+  <span class="flabel" style="margin-left:12px">Період для «Джерела» і «Деталі»</span>
   <div class="seg" id="segPeriod">
     <button data-p="7d">7Д</button><button data-p="14d">14Д</button>
     <button data-p="mtd" class="on">MTD</button><button data-p="prev">Мин. міс.</button>
-    <button data-p="90d">90Д</button><button data-p="custom">Свій</button>
+    <button data-p="30d">30Д</button><button data-p="90d">90Д</button><button data-p="custom">Свій</button>
   </div>
+  <span class="psum" id="periodSum"></span>
   <div class="frange" id="frange"><input type="date" id="dFrom"><span class="flabel">→</span><input type="date" id="dTo"></div>
   <input type="search" id="qSearch" placeholder="пошук: канал / SKU / кампанія" style="width:220px;margin-left:auto">
   <button class="btn" onclick="window.print()">⎙ PDF</button>
 </div>
 
 <section id="s-lev" style="padding-top:22px">
-  <div class="sh"><h2>Три важелі росту</h2>
+  <div class="sh"><h2>Три важелі росту <span class="fixed">поточний місяць</span></h2>
     <span class="note">Виручка = Замовлення × Середній чек × (1 − скасування) · порівняння з тим самим відрізком минулого року</span></div>
   <div class="fgrid" id="levers"></div>
   <div class="card" id="leverNote" style="margin-top:12px"></div>
@@ -296,14 +301,14 @@ footer{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);display
 
 <!-- ═══ ВОРОНКИ ═══ -->
 <section id="s-fun">
-  <div class="sh"><h2>Воронки — що і як перформить</h2>
+  <div class="sh"><h2>Воронки — що і як перформить <span class="fixed">поточний місяць</span></h2>
     <span class="note" id="funNote"></span></div>
   <div class="fgrid" id="funnels"></div>
 </section>
 
 <!-- ═══ ПЛАН ДІЙ ═══ -->
 <section id="s-plan">
-  <div class="sh"><h2>План дій</h2>
+  <div class="sh"><h2>План дій <span class="fixed">не залежить від періоду</span></h2>
     <span class="note">кожне завдання має виконавця, спосіб, ціль і результат</span></div>
   <div class="tabs" id="planTabs">
     <button data-t="tactical" class="on">Тактика · день–тиждень</button>
@@ -464,8 +469,14 @@ function comparePrev(a, b) {
   if (S.p === 'mtd') return [D.period_prev[0], D.period_prev[1]];
   const len = dayDiff(a, b) + 1; return [dayAdd(a, -len), dayAdd(a, -1)];
 }
+// Межі періоду в індексах DATES; період поза даними → порожній (i1 < i0), а не «всі дані»
+const rng = (a, b) => {
+  const first = DATES[0], last = DATES[NDAY - 1];
+  if (b < first || a > last) return [0, -1];
+  return [a < first ? 0 : idx(a), b > last ? NDAY - 1 : idx(b)];
+};
 function slice(a, b) {
-  const i0 = idx(a) < 0 ? 0 : idx(a), i1 = idx(b) < 0 ? NDAY - 1 : idx(b);
+  const [i0, i1] = rng(a, b);
   const byCh = {}, byGroup = {}, daily = {}, tot = { o: 0, r: 0, m: 0, c: 0 };
   const n = Math.max(0, i1 - i0 + 1);
   const dR = new Array(n).fill(0), dO = new Array(n).fill(0), dM = new Array(n).fill(0);
@@ -484,7 +495,7 @@ function slice(a, b) {
   return { byCh, byGroup, daily, tot, i0, i1, dR, dO, dM, labels: DATES.slice(i0, i1 + 1) };
 }
 function sliceFacts(facts, a, b, keyPos, valPos) {
-  const i0 = idx(a) < 0 ? 0 : idx(a), i1 = idx(b) < 0 ? NDAY - 1 : idx(b), out = {};
+  const [i0, i1] = rng(a, b), out = {};
   for (const f of facts) { if (f[0] < i0 || f[0] > i1) continue;
     const t = out[f[keyPos]] || (out[f[keyPos]] = valPos.map(() => 0)); valPos.forEach((p, j) => t[j] += f[p]); }
   return out;
@@ -1029,8 +1040,19 @@ function render() {
   [RA, RB] = periodRange();
   const [pa, pb] = comparePrev(RA, RB);
   CUR = slice(RA, RB); PRV = slice(pa, pb);
+  renderPeriodSum();
   renderSources(); renderChanTable(); renderDaily();
   renderFam(); renderTopSku(); renderCamp(); renderCanc(); renderStock();
+}
+
+
+function renderPeriodSum() {
+  const el = $('#periodSum'); if (!el) return;
+  const t = CUR.tot, p = PRV.tot, aov = t.o ? t.r / t.o : 0, d = pct(t.r, p.r);
+  el.innerHTML = `${RA.slice(5).split('-').reverse().join('.')}–${RB.slice(5).split('-').reverse().join('.')} · <b>${fmt(t.r)} ₴</b>
+    ${comparePrev(RA, RB)[0] < DATES[0] ? '<span title="попередній період виходить за межі завантажених даних">порівн. неповне</span>'
+      : `<span class="${d > 0 ? 'up' : d < 0 ? 'dn' : ''}">${sign(d)}%</span>`} · ${t.o} зам. · чек ${fmt(aov)} ₴`;
+  el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
 }
 
 /* ── КОНТРОЛИ ────────────────────────────────────────── */

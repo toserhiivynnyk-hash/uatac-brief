@@ -34,8 +34,14 @@ function comparePrev(a, b) {
   if (S.p === 'mtd') return [D.period_prev[0], D.period_prev[1]];
   const len = dayDiff(a, b) + 1; return [dayAdd(a, -len), dayAdd(a, -1)];
 }
+// Межі періоду в індексах DATES; період поза даними → порожній (i1 < i0), а не «всі дані»
+const rng = (a, b) => {
+  const first = DATES[0], last = DATES[NDAY - 1];
+  if (b < first || a > last) return [0, -1];
+  return [a < first ? 0 : idx(a), b > last ? NDAY - 1 : idx(b)];
+};
 function slice(a, b) {
-  const i0 = idx(a) < 0 ? 0 : idx(a), i1 = idx(b) < 0 ? NDAY - 1 : idx(b);
+  const [i0, i1] = rng(a, b);
   const byCh = {}, byGroup = {}, daily = {}, tot = { o: 0, r: 0, m: 0, c: 0 };
   const n = Math.max(0, i1 - i0 + 1);
   const dR = new Array(n).fill(0), dO = new Array(n).fill(0), dM = new Array(n).fill(0);
@@ -54,7 +60,7 @@ function slice(a, b) {
   return { byCh, byGroup, daily, tot, i0, i1, dR, dO, dM, labels: DATES.slice(i0, i1 + 1) };
 }
 function sliceFacts(facts, a, b, keyPos, valPos) {
-  const i0 = idx(a) < 0 ? 0 : idx(a), i1 = idx(b) < 0 ? NDAY - 1 : idx(b), out = {};
+  const [i0, i1] = rng(a, b), out = {};
   for (const f of facts) { if (f[0] < i0 || f[0] > i1) continue;
     const t = out[f[keyPos]] || (out[f[keyPos]] = valPos.map(() => 0)); valPos.forEach((p, j) => t[j] += f[p]); }
   return out;
@@ -599,8 +605,19 @@ function render() {
   [RA, RB] = periodRange();
   const [pa, pb] = comparePrev(RA, RB);
   CUR = slice(RA, RB); PRV = slice(pa, pb);
+  renderPeriodSum();
   renderSources(); renderChanTable(); renderDaily();
   renderFam(); renderTopSku(); renderCamp(); renderCanc(); renderStock();
+}
+
+
+function renderPeriodSum() {
+  const el = $('#periodSum'); if (!el) return;
+  const t = CUR.tot, p = PRV.tot, aov = t.o ? t.r / t.o : 0, d = pct(t.r, p.r);
+  el.innerHTML = `${RA.slice(5).split('-').reverse().join('.')}–${RB.slice(5).split('-').reverse().join('.')} · <b>${fmt(t.r)} ₴</b>
+    ${comparePrev(RA, RB)[0] < DATES[0] ? '<span title="попередній період виходить за межі завантажених даних">порівн. неповне</span>'
+      : `<span class="${d > 0 ? 'up' : d < 0 ? 'dn' : ''}">${sign(d)}%</span>`} · ${t.o} зам. · чек ${fmt(aov)} ₴`;
+  el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
 }
 
 /* ── КОНТРОЛИ ────────────────────────────────────────── */
