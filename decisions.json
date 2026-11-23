@@ -10,9 +10,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 3664,
-   "after": 8506,
+   "after": 8278,
    "verdict": "helped",
-   "effect_pct": 132
+   "effect_pct": 126
   },
   {
    "id": 2,
@@ -24,7 +24,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 966,
+   "after": 950,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -38,9 +38,9 @@
    "manual_verdict": null,
    "note": "",
    "before": 1076,
-   "after": 5738,
+   "after": 5553,
    "verdict": "helped",
-   "effect_pct": 433
+   "effect_pct": 416
   },
   {
    "id": 4,
@@ -94,7 +94,7 @@
    "manual_verdict": null,
    "note": "",
    "before": 0,
-   "after": 176,
+   "after": 163,
    "verdict": "helped",
    "effect_pct": 100
   },
@@ -107,8 +107,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2990,
-   "after": 6531,
-   "effect_pct": 118,
+   "after": 6060,
+   "effect_pct": 103,
    "verdict": "helped",
    "note": "auto"
   },
@@ -121,8 +121,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 6739,
-   "after": 19184,
-   "effect_pct": 185,
+   "after": 21733,
+   "effect_pct": 222,
    "verdict": "helped",
    "note": "auto"
   },
@@ -135,8 +135,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1089,
-   "after": 3418,
-   "effect_pct": 214,
+   "after": 3621,
+   "effect_pct": 232,
    "verdict": "helped",
    "note": "auto"
   },
@@ -163,8 +163,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 1054,
-   "after": 428,
-   "effect_pct": -59,
+   "after": 468,
+   "effect_pct": -56,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -177,8 +177,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2942,
-   "after": 1826,
-   "effect_pct": -38,
+   "after": 2014,
+   "effect_pct": -32,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -191,8 +191,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 307,
-   "after": 19,
-   "effect_pct": -94,
+   "after": 34,
+   "effect_pct": -89,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -205,8 +205,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 65,
-   "after": 431,
-   "effect_pct": 563,
+   "after": 392,
+   "effect_pct": 503,
    "verdict": "helped",
    "note": "auto"
   },
@@ -233,8 +233,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 2700,
-   "after": 282,
-   "effect_pct": -90,
+   "after": 255,
+   "effect_pct": -91,
    "verdict": "hurt",
    "note": "auto"
   },
@@ -247,8 +247,8 @@
    "status": "open",
    "manual_verdict": null,
    "before": 60,
-   "after": 478,
-   "effect_pct": 696,
+   "after": 476,
+   "effect_pct": 694,
    "verdict": "helped",
    "note": "auto"
   },
@@ -261,7 +261,7 @@
    "status": "open",
    "manual_verdict": null,
    "before": 0,
-   "after": 83,
+   "after": 74,
    "effect_pct": 100,
    "verdict": "helped",
    "note": "auto"
@@ -292,6 +292,34 @@
    "after": 0,
    "effect_pct": 0,
    "verdict": "neutral",
+   "note": "auto"
+  },
+  {
+   "id": 22,
+   "created": "2026-11-23",
+   "channel_key": "Email/TG: SendPulse",
+   "owner": "Лера",
+   "action": "Email/TG: SendPulse 0 ₴ проти 17 200 ₴ — перезапустити розсилки.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 0,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
+   "note": "auto"
+  },
+  {
+   "id": 23,
+   "created": "2026-11-23",
+   "channel_key": "Інше: bing.com",
+   "owner": "Serhii",
+   "action": "Інше: bing.com 0 ₴ проти 7 390 ₴ — перезапустити розсилки.",
+   "status": "open",
+   "manual_verdict": null,
+   "before": 0,
+   "after": null,
+   "effect_pct": null,
+   "verdict": "pending",
    "note": "auto"
   }
  ]
